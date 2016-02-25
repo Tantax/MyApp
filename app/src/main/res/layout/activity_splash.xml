@@ -6,15 +6,11 @@
     android:background="@color/splashBackgroundColor"
     android:gravity="center">
 <TextView
+    android:id="@+id/title_text_view"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:textSize="24sp"
     android:textColor="@color/white"
     android:text="@string/splash_text"/>
-    <Button
-        android:id="@+id/enter_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/button_margin"
-        android:text="@string/click_to_enter"/>
+
 </LinearLayout>

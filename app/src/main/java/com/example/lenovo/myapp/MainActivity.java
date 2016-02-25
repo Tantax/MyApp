@@ -8,6 +8,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final int RESULT_CODE = 1234;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,7 +19,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 //点击触发事件
-                Toast.makeText(MainActivity.this, "点击事件！", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent();
+                intent.putExtra(SplashActivity.TITLE,"主页送回的数据");
+                setResult(RESULT_CODE,intent);
+                finish();//关闭当前页面
             }
         });
         findViewById(R.id.button_second).setOnClickListener(new View.OnClickListener(){
@@ -28,6 +33,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Intent intent = getIntent();
+        if(intent != null){
+            String title =  intent.getStringExtra(SplashActivity.TITLE);
+            UserInfo userInfo = (UserInfo) intent.getSerializableExtra(SplashActivity.USER_INFO);
+            setTitle("名字是："+userInfo.getmUserName());
+
+        }
     }
 
 }
