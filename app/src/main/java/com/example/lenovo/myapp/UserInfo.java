@@ -8,6 +8,8 @@ import java.io.Serializable;
 public class UserInfo implements Serializable {
     private String mUserName;
     private int mAge;
+    private String mAvatarUrl;
+    private float mWeight;
 
     public UserInfo(String mUserName, int mAge ) {
         this.mAge = mAge;
