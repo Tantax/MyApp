@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v){
                 //点击触发事件
                 Intent intent = new Intent();
-                intent.putExtra(SplashActivity.TITLE,"主页送回的数据");
+                intent.putExtra(SplashActivity.TITLE,"这是主页送回给起始页的数据");
                 setResult(RESULT_CODE,intent);
                 finish();//关闭当前页面
             }
@@ -36,14 +35,21 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        findViewById(R.id.button_three).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,ListViewDemoActivity.class);
+                startActivity(intent);
+            }
+        });
 
         Intent intent = getIntent();
         if(intent != null){
             String title =  intent.getStringExtra(SplashActivity.TITLE);
             UserInfo userInfo = (UserInfo) intent.getSerializableExtra(SplashActivity.USER_INFO);
-            setTitle("名字是："+userInfo.getmUserName());
-
+            setTitle("名字是：" + userInfo.getmUserName());
         }
+
     }
 
     @Override

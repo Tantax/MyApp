@@ -36,6 +36,7 @@ public class SplashActivity extends Activity {
         mTextView = (TextView) findViewById(R.id.title_text_view);
         final String title = mTextView.getText().toString();
 
+
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {

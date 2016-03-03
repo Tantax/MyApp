@@ -19,11 +19,16 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="第一个页面"
+        android:text="向起始页传数据"
         android:id="@+id/button_first" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="第二个页面"
+        android:text="返回起始页"
         android:id="@+id/button_second" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开打电话本"
+        android:id="@+id/button_three" />
 </LinearLayout>
