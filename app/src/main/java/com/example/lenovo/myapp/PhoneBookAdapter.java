@@ -8,8 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,20 +46,53 @@ public class PhoneBookAdapter extends BaseAdapter {
     }
 
     @Override
+    public int getItemViewType(int position) {
+        return super.getItemViewType(position);
+    }
+
+    /**
+     * 每一行数据显示在界面上，用户能够看到
+     *
+     * @param i
+     * @param view
+     * @param viewGroup
+     * @return
+     */
+    @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         // 返回一个视图
-        view = mLayoutInflater.inflate(R.layout.item_phone_book_friend,null);
-        // 获取控件
-        TextView nameTextView = (TextView) view.findViewById(R.id.name_text_view);
-        TextView ageTextView = (TextView) view.findViewById(R.id.age_text_view);
-        ImageView avatatimageView = (ImageView) view.findViewById(R.id.avatar_image_view);
+        ViewHolder viewHolder;
+        if (view == null) {
+            view = mLayoutInflater.inflate(R.layout.item_phone_book_friend, null);
 
-
+            viewHolder = new ViewHolder();
+            // 获取控件
+            viewHolder.nameTextView = (TextView) view.findViewById(R.id.name_text_view);
+            viewHolder.ageTextView = (TextView) view.findViewById(R.id.age_text_view);
+            viewHolder.avatarImageView = (ImageView) view.findViewById(R.id.avatar_image_view);
+            view.setTag(viewHolder);
+        }else{
+            viewHolder = (ViewHolder) view.getTag();
+        }
         // 和数据之间进行绑定
-        nameTextView.setText(mUserInfos.get(i).getmUserName());
-        ageTextView.setText(String.valueOf(mUserInfos.get(i).getmAge()));
-        avatatimageView.setImageResource(R.drawable.ic_launcher);
-
+        viewHolder.nameTextView.setText(mUserInfos.get(i).getmUserName());
+        viewHolder.ageTextView.setText(String.valueOf(mUserInfos.get(i).getmAge()));
+        viewHolder.avatarImageView.setImageResource(R.drawable.ic_launcher);
         return view;
+    }
+
+    class ViewHolder {
+        TextView nameTextView;
+        TextView ageTextView;
+        ImageView avatarImageView;
+    }
+
+    /**
+     * 重置数据
+     *
+     * @param userInfos
+     */
+    public void resetData(List<UserInfo> userInfos) {
+        mUserInfos = userInfos;
     }
 }

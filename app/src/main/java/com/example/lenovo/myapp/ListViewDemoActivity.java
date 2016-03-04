@@ -35,17 +35,25 @@ public class ListViewDemoActivity extends Activity {
         mUserInfos.add(new UserInfo("赵九",14));
         mUserInfos.add(new UserInfo("李十",26));
 
-        PhoneBookAdapter phoneBookAdapter = new PhoneBookAdapter(ListViewDemoActivity.this, mUserInfos);
+        final PhoneBookAdapter phoneBookAdapter = new PhoneBookAdapter(ListViewDemoActivity.this, mUserInfos);
         mPhoneBookListView.setAdapter(phoneBookAdapter);
-
-
-        // 更新ListView里的数据
-        phoneBookAdapter.notifyDataSetChanged();
 
         // 点击事件
         mPhoneBookListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if(position == 0) {
+                    // 新建另外一批数据
+                    mUserInfos.clear();
+                    mUserInfos.add(new UserInfo("我是新数据一",1));
+                    mUserInfos.add(new UserInfo("我是新数据二",2));
+                    mUserInfos.add(new UserInfo("我是新数据三",3));
+                    // 替换老的数据
+                    phoneBookAdapter.resetData(mUserInfos);
+                    // 刷新ListView，让它更新自己的视图
+                    phoneBookAdapter.notifyDataSetChanged();
+                }
+
                 Toast.makeText(ListViewDemoActivity.this, mUserInfos.get(position).getmUserName()+"被点击了！",Toast.LENGTH_SHORT).show();
             }
         });
