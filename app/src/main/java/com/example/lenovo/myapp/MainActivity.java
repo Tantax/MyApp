@@ -5,86 +5,69 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     public static final int RESULT_CODE = 1234;
     private static final String TAG = MainActivity.class.getSimpleName();
+    private Button mButton_first;
+    private Button mButton_second;
+    private Button mButton_three;
+    private Button mButton_gridView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Log.i(TAG,"onCreate");
-        findViewById(R.id.button_first).setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                //点击触发事件
-                Intent intent = new Intent();
-                intent.putExtra(SplashActivity.TITLE,"这是主页送回给起始页的数据");
-                setResult(RESULT_CODE,intent);
-                finish();//关闭当前页面
-            }
-        });
-        findViewById(R.id.button_second).setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                //点击触发事件
-                Intent intent = new Intent(MainActivity.this,SplashActivity.class);
-                startActivity(intent);
-            }
-        });
-        findViewById(R.id.button_three).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,ListViewDemoActivity.class);
-                startActivity(intent);
-            }
-        });
+        initViews();
 
+//        handleIntentData();
+    }
+
+    private void initViews() {
+        mButton_first = (Button) findViewById(R.id.button_first);
+        mButton_second = (Button) findViewById(R.id.button_second);
+        mButton_three = (Button) findViewById(R.id.button_three);
+        mButton_gridView = (Button) findViewById(R.id.button_gridView);
+
+        mButton_first.setOnClickListener(this);
+        mButton_second.setOnClickListener(this);
+        mButton_three.setOnClickListener(this);
+        mButton_gridView.setOnClickListener(this);
+    }
+
+    private void handleIntentData() {
         Intent intent = getIntent();
         if(intent != null){
             String title =  intent.getStringExtra(SplashActivity.TITLE);
             UserInfo userInfo = (UserInfo) intent.getSerializableExtra(SplashActivity.USER_INFO);
             setTitle("名字是：" + userInfo.getmUserName());
         }
-
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        Log.i(TAG,"onStart:");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.i(TAG,"onResume:");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.i(TAG,"onPause:");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.i(TAG,"onStop:");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.i(TAG,"onDestroy:");
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.i(TAG,"onRestart:");
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.button_first:
+                //点击触发事件
+                Intent intent = new Intent();
+                intent.putExtra(SplashActivity.TITLE,"这是主页送回给起始页的数据");
+                setResult(RESULT_CODE,intent);
+                finish();//关闭当前页面
+                break;
+            case R.id.button_second:
+                startActivity(new Intent(MainActivity.this,SplashActivity.class));
+                break;
+            case R.id.button_three:
+                startActivity(new Intent(MainActivity.this,ListViewDemoActivity.class));
+                break;
+            case R.id.button_gridView:
+                startActivity(new Intent(MainActivity.this,GridViewDemoActivity.class));
+                break;
+            default:
+                break;
+        }
     }
 }

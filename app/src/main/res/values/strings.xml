@@ -3,4 +3,5 @@
     <string name="splash_text">极客班启动页面</string>
     <string name="click_to_enter">Enter</string>
     <string name="phone_book">电话本</string>
+    <string name="GridView_demo">GridView演示</string>
 </resources>

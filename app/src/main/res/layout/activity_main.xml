@@ -20,15 +20,44 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="向起始页传数据"
-        android:id="@+id/button_first" />
+        android:id="@+id/button_first"
+        android:visibility="gone"
+        />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="返回起始页"
-        android:id="@+id/button_second" />
+        android:id="@+id/button_second"
+        android:visibility="gone"
+        />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="开打电话本"
         android:id="@+id/button_three" />
+    <Button
+        android:id="@+id/button_gridView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/GridView_demo"/>
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我来自ScrollView"
+                />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ScrollView里面的按钮"
+                />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
