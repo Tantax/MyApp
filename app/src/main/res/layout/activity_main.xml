@@ -60,4 +60,9 @@
                 />
         </LinearLayout>
     </ScrollView>
+    <Button
+        android:id="@+id/button_test_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/TestView_button"/>
 </LinearLayout>

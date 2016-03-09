@@ -30,6 +30,11 @@
             android:icon="@drawable/ic_launcher">
 
         </activity>
+        <activity
+            android:name=".TestViewButtonActivity"
+            android:icon="@drawable/ic_launcher">
+
+        </activity>
     </application>
 
 </manifest>

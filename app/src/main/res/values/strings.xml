@@ -4,4 +4,5 @@
     <string name="click_to_enter">Enter</string>
     <string name="phone_book">电话本</string>
     <string name="GridView_demo">GridView演示</string>
+    <string name="TestView_button">20</string>
 </resources>

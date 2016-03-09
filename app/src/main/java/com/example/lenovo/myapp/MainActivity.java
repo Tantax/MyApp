@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button mButton_second;
     private Button mButton_three;
     private Button mButton_gridView;
+    private Button mButton_testView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +32,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mButton_second = (Button) findViewById(R.id.button_second);
         mButton_three = (Button) findViewById(R.id.button_three);
         mButton_gridView = (Button) findViewById(R.id.button_gridView);
+        mButton_testView = (Button) findViewById(R.id.button_test_view);
 
         mButton_first.setOnClickListener(this);
         mButton_second.setOnClickListener(this);
         mButton_three.setOnClickListener(this);
         mButton_gridView.setOnClickListener(this);
+        mButton_testView.setOnClickListener(this);
     }
 
     private void handleIntentData() {
@@ -66,6 +69,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.button_gridView:
                 startActivity(new Intent(MainActivity.this,GridViewDemoActivity.class));
                 break;
+            case R.id.button_test_view:
+                startActivity(new Intent(MainActivity.this,TestViewButtonActivity.class));
             default:
                 break;
         }
