@@ -20,6 +20,7 @@ public class TestRedButton extends View implements View.OnClickListener {
 
     //自定义属性
     private int mBackgroundColor;
+    private int mTextSize;
 
     public TestRedButton(Context context) {
         this(context, null);
@@ -37,13 +38,14 @@ public class TestRedButton extends View implements View.OnClickListener {
     private void init(Context context, AttributeSet attrs) {
         mPanit = new Paint();
         mRect = new Rect();
-
         this.setOnClickListener(this);
-
         //获取自定义属性的全部属性
-        TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.TestRedButton);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.TestRedButton);
 
         mBackgroundColor = typedArray.getColor(R.styleable.TestRedButton_backgroundColor, Color.RED);
+
+        mTextSize = typedArray.getDimensionPixelSize(R.styleable.TestRedButton_textSize, 18);
+
     }
 
     @Override
@@ -54,8 +56,8 @@ public class TestRedButton extends View implements View.OnClickListener {
         /**
          * 画了红色的圆
          */
-        mPanit.setColor(Color.RED);
-        canvas.drawCircle(getWidth()/2, getHeight()/2, getWidth()/2, mPanit);
+        mPanit.setColor(mBackgroundColor);
+        canvas.drawCircle(getWidth() / 2, getHeight() / 2, getWidth() / 2, mPanit);
 
         // 中间有一个白色的数字
         mPanit.setColor(Color.WHITE);
@@ -70,7 +72,7 @@ public class TestRedButton extends View implements View.OnClickListener {
         int textWidth = mRect.width();
         int textHeight = mRect.height();
 
-        canvas.drawText(text, getWidth()/2 - textWidth/2, getHeight()/2 + textWidth/2, mPanit);
+        canvas.drawText(text, getWidth() / 2 - textWidth / 2, getHeight() / 2 + textWidth / 2, mPanit);
 
 
     }
@@ -80,9 +82,9 @@ public class TestRedButton extends View implements View.OnClickListener {
         /**
          * 每点击一次减少1
          */
-        if(mNumber>0){
+        if (mNumber > 0) {
             mNumber--;
-        }else{
+        } else {
             mNumber = 20;
         }
         invalidate();//数据刷新
